@@ -218,6 +218,8 @@ AdjacencyList DSC_to_DSK(ArrayEdge DSC, int sodinh) {
 		p->link = NULL;
 
 		insertLast(l.ds[c.dinhDau], p);
+	/*	p->link = l.ds[c.dinhDau];
+		l.ds[c.dinhDau] = p;*/
 	}
 
 	return l;
@@ -326,7 +328,7 @@ VERTEX DinhBacMax(AdjacencyList x) {
 	int max = BacVao(x, 0) + TinhBacRa(x, 0);
 
 	for (int i = 1; i < x.n; i++) {
-		int k = BacVao(x, i);
+		int k = BacVao(x, i) + TinhBacRa(x, i);
 		if (k > max) {
 			max = k;
 			dinhBacMax = i;
